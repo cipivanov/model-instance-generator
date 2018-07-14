@@ -19,6 +19,7 @@ public class InstanceGeneratorTest {
             assert payment.getSender().matches("[A-Z]{5}");
             assert payment.getReceiver().matches("(BO|BA)");
             assert payment.getAmount().matches("[0-9]{5,6}\\.[0-9]{2}");
+            assert payment.getRepeated().toString().matches("(true)");
         }
     }
 
@@ -30,6 +31,7 @@ public class InstanceGeneratorTest {
 
             assert block.getId().matches("[A-Z]{3}");
             assert block.getFloor().toString().matches("[0-9]");
+            assert block.getRenovated().toString().matches("(false)");
         }
     }
 

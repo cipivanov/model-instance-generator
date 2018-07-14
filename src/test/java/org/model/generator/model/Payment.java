@@ -16,6 +16,9 @@ public class Payment {
     @AutoValue(pattern = "(BO|BA)")
     private String receiver;
 
+    @AutoValue(pattern = "true")
+    private Boolean repeated;
+
     public String getId() {
         return id;
     }
@@ -48,6 +51,14 @@ public class Payment {
         this.receiver = receiver;
     }
 
+    public Boolean getRepeated() {
+        return repeated;
+    }
+
+    public void setRepeated(Boolean repeated) {
+        this.repeated = repeated;
+    }
+
     @Override
     public String toString() {
         return "Payment {" +
@@ -55,6 +66,7 @@ public class Payment {
                 ", \n amount=" + amount +
                 ", \n sender='" + sender + '\'' +
                 ", \n receiver='" + receiver + '\'' +
+                ", \n repeated='" + repeated + '\'' +
                 " \n}";
     }
 }

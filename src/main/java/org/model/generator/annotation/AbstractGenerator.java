@@ -19,9 +19,8 @@ public abstract class AbstractGenerator<T> implements IGenerator<T> {
 
     public abstract T generateAnnotatedValue(String rawValue);
 
-    @Override
-    public T generateAnnotatedValue() {
-        return generateAnnotatedValue(generateRawValue(metaData.getPattern()));
+    public Metadata getMetaData() {
+        return metaData;
     }
 
     @Override
@@ -29,12 +28,13 @@ public abstract class AbstractGenerator<T> implements IGenerator<T> {
         return generateAnnotatedValue(generateRawValue(metaData.getDefaultPattern()));
     }
 
+    @Override
+    public T generateAnnotatedValue() {
+        return generateAnnotatedValue(generateRawValue(metaData.getPattern()));
+    }
+
     private String generateRawValue(final String pattern) {
         Generex generex = new Generex(pattern);
         return generex.random();
-    }
-
-    public Metadata getMetaData() {
-        return metaData;
     }
 }

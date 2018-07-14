@@ -6,6 +6,8 @@ public class Block {
 
     private Integer floor;
 
+    private Boolean renovated;
+
     public String getId() {
         return id;
     }
@@ -22,11 +24,20 @@ public class Block {
         this.floor = floor;
     }
 
+    public Boolean getRenovated() {
+        return renovated;
+    }
+
+    public void setRenovated(Boolean renovated) {
+        this.renovated = renovated;
+    }
+
     @Override
     public String toString() {
         return "Block {" +
                 "\n id='" + id + '\'' +
                 ",\n floor=" + floor +
+                ",\n floor=" + renovated +
                 "}";
     }
 }

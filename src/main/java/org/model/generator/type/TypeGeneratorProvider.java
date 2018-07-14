@@ -7,10 +7,7 @@ import org.model.generator.type.impl.*;
 
 import java.lang.reflect.Field;
 
-public class DataTypeGenerator {
-
-    private DataTypeGenerator() {
-    }
+public abstract class TypeGeneratorProvider {
 
     public static IGenerator getGeneratorFor(final Field field) {
         Metadata metaData = new AnnotationMetadata(field);
@@ -25,6 +22,8 @@ public class DataTypeGenerator {
                 return new DoubleGenerator(metaData);
             case LONG:
                 return new LongGenerator(metaData);
+            case BOOLEAN:
+                return new BooleanGenerator(metaData);
             default:
                 return new UserDefinedGenerator(metaData);
         }

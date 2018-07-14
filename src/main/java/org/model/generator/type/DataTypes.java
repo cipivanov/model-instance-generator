@@ -8,18 +8,19 @@ public enum DataTypes {
     STRING(String.class),
     DOUBLE(Double.class),
     INTEGER(Integer.class),
+    BOOLEAN(Boolean.class),
     USER_DEFINED(Object.class),
     LOCAL_DATE(LocalDate.class);
 
-    private Class clazz;
+    private Class type;
 
-    DataTypes(Class clazz) {
-        this.clazz = clazz;
+    DataTypes(Class type) {
+        this.type = type;
     }
 
-    public static DataTypes getDataTypeEnum(Class clazz) {
+    public static DataTypes getDataTypeEnum(Class type) {
         for (DataTypes dataType : DataTypes.values()) {
-            if (dataType.clazz.equals(clazz)) {
+            if (dataType.type.equals(type)) {
                 return dataType;
             }
         }
