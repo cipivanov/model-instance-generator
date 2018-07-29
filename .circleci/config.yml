@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    environment:
+      CC_TEST_REPORTER_ID: 7c683f71befd0ba717a3989fd66d54b72c7b5cf968ed092291711c1187909f91
+
+    steps:
+      - checkout
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
+      - run: ./cc-test-reporter before-build
+      - run: mvn clean install
+      - run: cp target/site/jacoco/jacoco.xml jacoco.xml
+      - run: ls
+      - run: pwd
+      - run: ./cc-test-reporter after-build --coverage-input-type jacoco --debug --exit-code 0
