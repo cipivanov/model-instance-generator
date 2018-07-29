@@ -17,9 +17,9 @@ public class LocalDateGenerator extends AbstractGenerator<LocalDate> {
     public LocalDate generateAnnotatedValue() {
         switch (DateGeneratorType.getEnumByRegex(getMetaData().getPattern())) {
             case PAST:
-                return DateUtils.getRandomPastDate();
+                return DateUtils.getAnyPastDate();
             case FUTURE:
-                return DateUtils.getRandomFutureDate();
+                return DateUtils.getAnyFutureDate();
             default:
                 return DateUtils.getCurrentDate();
         }
