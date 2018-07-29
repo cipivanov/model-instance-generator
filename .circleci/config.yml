@@ -13,7 +13,5 @@ jobs:
       - run: chmod +x ./cc-test-reporter
       - run: ./cc-test-reporter before-build
       - run: mvn clean install
-      - run: cp target/site/jacoco/jacoco.xml jacoco.xml
-      - run: ls
-      - run: pwd
-      - run: ./cc-test-reporter after-build --coverage-input-type jacoco --debug --exit-code 0
+      - run: JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage target/site/jacoco/jacoco.xml --input-type jacoco
+      - run: ./cc-test-reporter upload-coverage
