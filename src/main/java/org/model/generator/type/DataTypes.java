@@ -8,11 +8,17 @@ public enum DataTypes {
     STRING(String.class),
     DOUBLE(Double.class),
     INTEGER(Integer.class),
-    BOOLEAN(Boolean.class),
+    BOOLEAN(Boolean.class, "boolean"),
     USER_DEFINED(Object.class),
     LOCAL_DATE(LocalDate.class);
 
     private Class type;
+    private String primitiveClass;
+
+    DataTypes(Class type, String primitiveClass) {
+        this.type = type;
+        this.primitiveClass = primitiveClass;
+    }
 
     DataTypes(Class type) {
         this.type = type;

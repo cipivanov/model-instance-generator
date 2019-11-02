@@ -17,7 +17,7 @@ public class Payment {
     private String receiver;
 
     @AutoValue(pattern = "true")
-    private Boolean repeated;
+    private boolean repeated;
 
     public String getId() {
         return id;
