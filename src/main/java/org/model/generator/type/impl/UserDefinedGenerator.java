@@ -12,7 +12,7 @@ public class UserDefinedGenerator extends AbstractGenerator {
 
     @Override
     public Object generateAnnotatedValue() {
-        throw new RuntimeException("User defined fields should not be annotated");
+        throw new RuntimeException("User defined fields should not be annotated"); //FIXME: Will be thrown for primitives
     }
 
     @Override
@@ -22,6 +22,7 @@ public class UserDefinedGenerator extends AbstractGenerator {
     }
 
     @Override
+    @SuppressWarnings("unckecked")
     public Object generateNonAnnotatedValue() {
         return InstanceGenerator.of(getMetaData().getType());
     }
