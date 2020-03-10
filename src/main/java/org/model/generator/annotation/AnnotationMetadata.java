@@ -8,6 +8,6 @@ public class AnnotationMetadata extends Metadata {
 
     public AnnotationMetadata(Field field) {
         super(field.getType(),
-                field.isAnnotationPresent(AutoValue.class) ? field.getAnnotation(AutoValue.class).pattern() : "empty"); //TODO
+                field.isAnnotationPresent(AutoValue.class) ? field.getAnnotation(AutoValue.class).pattern() : null); //TODO
     }
 }
