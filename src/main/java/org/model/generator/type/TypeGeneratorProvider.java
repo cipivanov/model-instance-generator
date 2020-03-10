@@ -7,9 +7,9 @@ import org.model.generator.type.impl.*;
 
 import java.lang.reflect.Field;
 
-public abstract class TypeGeneratorProvider {
+public interface TypeGeneratorProvider {
 
-    public static IGenerator getGeneratorFor(final Field field) {
+    static IGenerator getGeneratorFor(final Field field) {
         Metadata metaData = new AnnotationMetadata(field);
         switch (DataTypes.getDataTypeEnum(field.getType())) {
             case LOCAL_DATE:

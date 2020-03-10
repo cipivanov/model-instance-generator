@@ -12,7 +12,7 @@ public final class DateUtils {
     private DateUtils() {
     }
 
-    public static LocalDate getRandomFutureDate() {
+    public static LocalDate getAnyFutureDate() {
         startDate = LocalDate.now();
         endDate = LocalDate.now().plusYears(3);
         randomEpochTime =
@@ -20,7 +20,7 @@ public final class DateUtils {
         return LocalDate.ofEpochDay(randomEpochTime);
     }
 
-    public static LocalDate getRandomPastDate() {
+    public static LocalDate getAnyPastDate() {
         startDate = LocalDate.of(1990, 1, 1);
         endDate = LocalDate.now();
         randomEpochTime =

@@ -7,6 +7,8 @@ import org.model.generator.model.user.Address;
 import org.model.generator.model.user.Block;
 import org.model.generator.model.user.User;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class InstanceGeneratorTest {
 
     @Test
@@ -15,11 +17,11 @@ public class InstanceGeneratorTest {
             Payment payment = InstanceGenerator.of(Payment.class);
             System.out.println(payment);
 
-            assert payment.getId().matches("[0-9]{9}");
-            assert payment.getSender().matches("[A-Z]{5}");
-            assert payment.getReceiver().matches("(BO|BA)");
-            assert payment.getAmount().matches("[0-9]{5,6}\\.[0-9]{2}");
-            assert payment.getRepeated().toString().matches("(true)");
+            assertThat(payment.getId().matches("[0-9]{9}")).isTrue();
+            assertThat(payment.getSender().matches("[A-Z]{5}")).isTrue();
+            assertThat(payment.getReceiver().matches("(BO|BA)")).isTrue();
+            assertThat(payment.getAmount().matches("[0-9]{5,6}\\.[0-9]{2}")).isTrue();
+            assertThat(payment.getRepeated().toString().matches("(true)")).isTrue();
         }
     }
 
@@ -29,9 +31,9 @@ public class InstanceGeneratorTest {
             Block block = InstanceGenerator.of(Block.class);
             System.out.println(block);
 
-            assert block.getId().matches("[A-Z]{3}");
-            assert block.getFloor().toString().matches("[0-9]");
-            assert block.getRenovated().toString().matches("(false)");
+            assertThat(block.getId().matches("[A-Z]{3}")).isTrue();
+            assertThat(block.getFloor().toString().matches("[0-9]")).isTrue();
+            assertThat(block.getRenovated().toString().matches("(false)")).isTrue();
         }
     }
 
@@ -41,9 +43,9 @@ public class InstanceGeneratorTest {
             Address address = InstanceGenerator.of(Address.class);
             System.out.println(address);
 
-            assert address.getHouse() != null;
-            assert address.getHouse().getFloor().matches("[0-9]{2}");
-            assert address.getHouse().getNumber().toString().matches("[0-9]{3}");
+            assertThat(address.getHouse()).isNotNull();
+            assertThat(address.getHouse().getFloor().matches("[0-9]{2}")).isTrue();
+            assertThat(address.getHouse().getNumber().matches("[0-9]{3}")).isTrue();
         }
     }
 
@@ -53,8 +55,8 @@ public class InstanceGeneratorTest {
             Meeting meeting = InstanceGenerator.of(Meeting.class);
             System.out.println(meeting);
 
-            assert meeting.getId().matches("[0-9]{3}(.*)");
-            assert meeting.getDate().toString().matches("([0-9]{4})-([0-9]{2})-([0-9]{2})");
+            assertThat(meeting.getId().matches("[0-9]{3}(.*)")).isTrue();
+            assertThat(meeting.getDate().toString().matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")).isTrue();
         }
     }
 
@@ -64,10 +66,11 @@ public class InstanceGeneratorTest {
             User user = InstanceGenerator.of(User.class);
             System.out.println(user);
 
-            assert user.getBlock() != null;
-            assert user.getAddress() != null;
-            assert user.getSecondaryAddress() != null;
-            assert user.getNonAnnotatedField() != null;
+            assertThat(user.getBlock()).isNotNull();
+            assertThat(user.getAddress()).isNotNull();
+            assertThat(user.getSecondaryAddress()).isNotNull();
+            assertThat(user.getNonAnnotatedField()).isNotNull();
         }
     }
+    //TODO: Negative tests
 }
